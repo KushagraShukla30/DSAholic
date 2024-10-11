@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let steps = [];
     let currentStep = 0;
+    let initialNumDisks = 0; // Store the initial number of disks
 
     // Function to create disks
     function createDisks(numDisks) {
@@ -15,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
         steps = []; // Clear steps
         currentStep = 0; // Reset current step
         
+        initialNumDisks = numDisks; // Store the initial number of disks
+
         for (let i = numDisks; i >= 1; i--) {
             const disk = document.createElement('div');
             disk.className = 'disk';
@@ -27,9 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Generate steps using Tower of Hanoi algorithm
-        towerOfHanoi(numDisks, 'rodA', 'rodC', 'rodB');
+        towerOfHanoi(initialNumDisks, 'rodA', 'rodC', 'rodB');
     }
-
 
     // Function to clear rods
     function clearRods() {
@@ -100,8 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
             output.innerText += `Move Disk ${disk} from ${formattedFrom} to ${formattedTo}\n`;
         }
     }
-    
-    
 
     // Handle Next Step button
     document.getElementById('nextStep').addEventListener('click', function() {
@@ -113,10 +113,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle Final Output button
     document.getElementById('finalOutput').addEventListener('click', function() {
-        while (currentStep < steps.length) {
-            displayStep();
-            currentStep++;
+        // Clear existing steps and generate steps for the initial number of disks
+        clearRods(); // Clear all rods for final output visualization
+        steps = []; // Clear steps
+
+        // Move all disks to the target rod without animation
+        for (let i = initialNumDisks; i >= 1; i--) { // Start from largest to smallest
+            const disk = document.createElement('div');
+            disk.className = 'disk';
+            disk.style.width = (i * 30) + 'px';
+            disk.style.backgroundColor = getDiskColor(i);
+            disk.innerText = i;
+
+            // Append the disk to rodC
+            rodC.appendChild(disk);
         }
+
+        // Update output to reflect the final state
+        output.innerText += `All disks moved to Rod C\n`;
+
+        // Reset currentStep to enable future steps
+        currentStep = 0; // Reset for future use
     });
 
     // Initial disk creation

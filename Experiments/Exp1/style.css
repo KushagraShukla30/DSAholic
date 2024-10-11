@@ -36,9 +36,10 @@ button:hover {
 }
 
 .tower-container {
+    margin: auto;
     display: flex;
+    max-width: 50rem;
     justify-content: space-around;
-    margin-top: 20px;
 }
 
 .rod {
@@ -105,9 +106,9 @@ button:hover {
 }
 
 .animate-up {
-    animation: moveUp 0.5s forwards; /* Adjust duration as needed */
+    animation: moveUp 0.4s forwards; /* Adjust duration as needed */
 }
 
 .animate-down {
-    animation: moveDown 0.5s forwards; /* Adjust duration as needed */
+    animation: moveDown 0.4s forwards; /* Adjust duration as needed */
 }
