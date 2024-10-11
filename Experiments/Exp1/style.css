@@ -84,3 +84,30 @@ button:hover {
 #output {
     white-space: pre-wrap;
 }
+
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-250px); /* Move up to the top of the rod */
+    }
+}
+
+@keyframes moveDown {
+    0% {
+        transform: translateY(-250px); /* Start from the top of the rod */
+    }
+    100% {
+        transform: translateY(0); /* Fall to the destination */
+    }
+}
+
+.animate-up {
+    animation: moveUp 0.5s forwards; /* Adjust duration as needed */
+}
+
+.animate-down {
+    animation: moveDown 0.5s forwards; /* Adjust duration as needed */
+}

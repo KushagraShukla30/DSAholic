@@ -56,22 +56,52 @@ document.addEventListener('DOMContentLoaded', function() {
             const { disk, from, to } = steps[currentStep];
             const fromRod = document.getElementById(from);
             const toRod = document.getElementById(to);
-
+    
             const diskElements = Array.from(fromRod.querySelectorAll('.disk'));
             const diskElement = diskElements.find(d => parseInt(d.innerText) === disk);
-
+    
+            // Disable buttons at the start of the animation
+            document.getElementById('nextStep').disabled = true;
+            document.getElementById('finalOutput').disabled = true;
+    
             if (diskElement) {
-                toRod.appendChild(diskElement);
+                // Add animation class to the disk element for upward motion
+                diskElement.classList.add('animate-up');
+    
+                // Wait for the upward animation to finish before moving the disk down
+                diskElement.addEventListener('animationend', function() {
+                    // Move the disk to the target rod
+                    // Set position to be on top of the target rod before falling
+                    diskElement.style.top = `${toRod.offsetTop}px`; // Set to the height of the rod
+                    toRod.appendChild(diskElement);
+    
+                    // Add animation class for downward motion
+                    diskElement.classList.remove('animate-up');
+                    diskElement.classList.add('animate-down');
+    
+                    // Reset the animation classes after the animation ends
+                    diskElement.addEventListener('animationend', function() {
+                        diskElement.classList.remove('animate-down');
+                        diskElement.style.position = ''; // Reset position
+                        diskElement.style.top = ''; // Reset top to default
+    
+                        // Enable buttons again
+                        document.getElementById('nextStep').disabled = false;
+                        document.getElementById('finalOutput').disabled = false;
+                    }, { once: true });
+                }, { once: true });
             }
-
+    
             // Convert rod IDs to uppercase (ROD A, ROD B, ROD C)
             const formattedFrom = from.charAt(0).toUpperCase() + "OD " + from.charAt(3).toUpperCase();
             const formattedTo = to.charAt(0).toUpperCase() + "OD " + to.charAt(3).toUpperCase();
-
+    
             // Format the output string
             output.innerText += `Move Disk ${disk} from ${formattedFrom} to ${formattedTo}\n`;
         }
     }
+    
+    
 
     // Handle Next Step button
     document.getElementById('nextStep').addEventListener('click', function() {
