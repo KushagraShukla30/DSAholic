@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSCode Exp. 1</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <main>
+        <div class="simOutline">
+            <h2 class="ExpNo">Experiment No. 00</h2>
+            <h3 class="Question">To solve the tower of Hanoi problem using recursion.</h3>
+            <hr>
+            <div class="sim">
+                <!-- Input -->
+                <!-- Enter Number of Disks:  -->
+                <button class="exp-btn" onclick="yourFunctionHere()">
+                    <img class="sim-expand" alt="Sim expand" src="./assets/sim-expand.svg">
+                </button>
+            </div>
+        </div>
+        <div class="swapOutline">
+
+            <div class="swapBoxCont">
+                <button onclick="loadTabContent('out')">OUT</button>
+                <button onclick="loadTabContent('code', 'experiments/experiment1/experiment1-code.html')">CODE</button>
+                <button onclick="loadTabContent('algo', 'experiments/experiment1/experiment1-algo.html')">ALGO</button>
+            </div>
+
+            <button class="vid-btn" onclick="yourFunctionHere()">
+                <img class="vid" alt="Video Icon" src="./assets/vid.svg">
+            </button>
+
+            <hr>
+
+            <div id="tab-content">
+                <p>Select a tab to view its content.</p>
+            </div>
+
+        </div>
+    </main>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.swapBoxCont button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.swapBoxCont button.active {
+    background-color: #007bff; /* Change to your preferred active color */
+    color: white; /* Text color for active tab */
+    font-weight: bold;
+    border-bottom: 3px solid #0056b3; /* Example highlight */
+}
