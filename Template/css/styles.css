@@ -11,3 +11,7 @@
     font-weight: bold;
     border-bottom: 3px solid #0056b3; /* Example highlight */
 }
+
+main{
+    display: flex;
+}

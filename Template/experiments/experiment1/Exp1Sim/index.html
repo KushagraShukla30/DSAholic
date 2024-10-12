@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tower of Hanoi Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Tower of Hanoi</h1>
+
+    <div class="controls">
+        <label for="numDisks">Number of Disks:</label>
+        <input type="number" id="numDisks" value="6" min="3" max="6">
+        <button id="nextStep">Next Step</button>
+        <button id="finalOutput">Final Output</button>
+    </div>
+
+    <div class="tower-container">
+        <div class="rod" id="rodA"></div>
+        <div class="rod" id="rodB"></div>
+        <div class="rod" id="rodC"></div>
+    </div>
+
+    <div class="output-container">
+        <div id="output" class="output-box"></div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
