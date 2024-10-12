@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const rodA = document.getElementById('rodA');
     const rodB = document.getElementById('rodB');
     const rodC = document.getElementById('rodC');
-    const output = document.getElementById('output');
+    // Remove the local output variable reference
+    // const output = document.getElementById('output');
 
     let steps = [];
     let currentStep = 0;
@@ -12,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to create disks
     function createDisks(numDisks) {
         clearRods(); // Clear rods before adding new disks
-        output.innerText = ''; // Clear output box
+        // output.innerText = ''; // No need to clear the local output anymore
+        sendOutputToParent(''); // Clear the output in parent window
         steps = []; // Clear steps
         currentStep = 0; // Reset current step
         
@@ -58,18 +60,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const { disk, from, to } = steps[currentStep];
             const fromRod = document.getElementById(from);
             const toRod = document.getElementById(to);
-    
+
             const diskElements = Array.from(fromRod.querySelectorAll('.disk'));
             const diskElement = diskElements.find(d => parseInt(d.innerText) === disk);
-    
+
             // Disable buttons at the start of the animation
             document.getElementById('nextStep').disabled = true;
             document.getElementById('finalOutput').disabled = true;
-    
+
             if (diskElement) {
                 // Add animation class to the disk element for upward motion
                 diskElement.classList.add('animate-up');
-    
+                    
                 // Wait for the upward animation to finish before moving the disk down
                 diskElement.addEventListener('animationend', function() {
                     // Move the disk to the target rod
@@ -93,13 +95,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, { once: true });
                 }, { once: true });
             }
-    
+
             // Convert rod IDs to uppercase (ROD A, ROD B, ROD C)
             const formattedFrom = from.charAt(0).toUpperCase() + "OD " + from.charAt(3).toUpperCase();
             const formattedTo = to.charAt(0).toUpperCase() + "OD " + to.charAt(3).toUpperCase();
-    
-            // Format the output string
-            output.innerText += `Move Disk ${disk} from ${formattedFrom} to ${formattedTo}\n`;
+
+            // Send output to the parent window
+            sendOutputToParent(`Move Disk ${disk} from ${formattedFrom} to ${formattedTo}\n`);
         }
     }
 
@@ -129,12 +131,16 @@ document.addEventListener('DOMContentLoaded', function() {
             rodC.appendChild(disk);
         }
 
-        // Update output to reflect the final state
-        output.innerText += `All disks moved to Rod C\n`;
+        // Send final state to the parent window
+        sendOutputToParent('All disks moved to Rod C\n');
 
         // Reset currentStep to enable future steps
         currentStep = 0; // Reset for future use
     });
+
+    function sendOutputToParent(message) {
+        window.parent.postMessage(message, '*');
+    }
 
     // Initial disk creation
     createDisks(parseInt(numDisksInput.value));
