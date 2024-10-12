@@ -1,0 +1,84 @@
+body{
+    background-color: #19151c;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo{
+    height: 59px;
+    width: 230px;
+    background-color: #bb55ff;
+    border: none;
+    border-radius: 31px;
+    /* margin-top: 22px;
+    margin-left: 45px; */
+}
+
+#control{
+    height: 50px;
+    width: 335px;
+    border-radius: 25px;
+    background-color: #bb55ff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Increase the size of all icons */
+#control i, #more-exp i {
+    font-size: 24px; /* Adjust size as per your requirement */
+    margin: 0 10px;  /* Adds spacing between icons */
+    color: #dfc0fb;  /* Optional: Customize the icon color */
+}
+
+#icon i {
+    font-size: 24px;
+}
+
+/* Example for making icons bigger or smaller */
+#control i:hover, #more-exp i:hover {
+    color: #dfc0fb; /* Optional: Change color on hover */
+    transform: scale(1.2); /* Increase size on hover */
+    transition: 0.3s; /* Smooth transition for the hover effect */
+}
+
+
+.custom-input {
+    display: flex;
+    align-items: center;
+    border: 2px solid #8c54fc;
+    border-radius: 30px;
+    /* padding: 5px; */
+    width: 100%;
+    max-width: 500px;
+    background-color: #e9dbf4; /* Light purple background */
+}
+
+.custom-input label {
+    background-color: #8c54fc;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 30px 0 0 30px; /* Rounded on the left side */
+    font-size: 1em;
+}
+
+.custom-input input {
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    border-radius: 0 30px 30px 0; /* Rounded on the right side */
+    width: 100%;
+    background-color: #e9dbf4;
+    color: #333;
+    font-size: 1em;
+}
+
+.custom-input input::placeholder {
+    color: #8c54fc;
+}
