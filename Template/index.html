@@ -7,22 +7,37 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <main>
 
+    <header>
+        <!-- LOGO -->
+
+        <!-- Navigation Controls -->
+        <div class="nav-controls">
+        </div>
+
+        <!-- More Button -->
+        <div class="more-btn">
+            <select id="dropdown">
+                <option value="">-- Select Experiment --</option>
+                <option value="1">Experiment 1: Tower of Hanoi</option>
+                <option value="2">Experiment 2: Stack Operations</option>
+                <option value="3">Experiment 3: Queue Operations</option>
+                <option value="4">Final Year</option>
+            </select> 
+        </div>
+    </header>
+
+    <main>
         <div class="simOutline">
             <h2 class="ExpNo">Experiment No. 00</h2>
             <h3 class="Question">To solve the tower of Hanoi problem using recursion.</h3>
             <hr>
             <div class="sim">
-
-                <iframe src="experiments/experiment1/Exp1Sim/index.html" 
-                width="100%" height="500px" frameborder="0"></iframe>
-                
+                <iframe id="experimentFrame" src="experiments/experiment1/Exp1Sim/index.html" width="100%" height="500px" frameborder="0"></iframe>
             </div>
         </div>
 
         <div class="swapOutline">
-
             <div class="swapBoxCont">
                 <button onclick="loadTabContent('out')">OUT</button>
                 <button onclick="loadTabContent('code', 'experiments/experiment1/experiment1-code.html')">CODE</button>
@@ -38,9 +53,10 @@
             <div id="tab-content">
                 <p>Select a tab to view its content.</p>
             </div>
-
         </div>
     </main>
+    
     <script src="scripts/main.js"></script>
+    <script src="scripts/experimentSwitcher.js"></script> <!-- Include the new JS file -->
 </body>
 </html>
