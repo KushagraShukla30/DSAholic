@@ -43,13 +43,15 @@ function clearOutput() {
 
 // Event listener for messages from the iframe (Exp1Sim)
 window.addEventListener('message', function(event) {
-    const output = event.data;
+    const message = event.data;
 
-    if (typeof output === 'string') {
-        currentOutput += output + '<br>'; // Append new output to the stored variable
+    if (message.type === 'clearOutput') {
+        clearOutput(); // NEW: Clear output when receiving a clear message
+    } else if (typeof message === 'string') {
+        currentOutput += message + '<br>'; // Append new output to the stored variable
         document.getElementById('tab-content').innerHTML = currentOutput; // Display updated output
     } else {
-        console.warn("Received non-string data:", output); // Log any non-string data
+        console.warn("Received non-string data:", message); // Log any non-string data
     }
 });
 
@@ -57,9 +59,3 @@ window.addEventListener('message', function(event) {
 window.onload = function() {
     loadTabContent('out'); // Load OUT tab by default
 };
-
-// Function to handle disk count change
-function onDiskCountChange(newDiskCount) {
-    clearOutput(); // Clear output when the disk count changes
-    // Additional logic to handle disk count change can be added here
-}
