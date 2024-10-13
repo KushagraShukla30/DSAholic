@@ -3,22 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const rodA = document.getElementById('rodA');
     const rodB = document.getElementById('rodB');
     const rodC = document.getElementById('rodC');
-    // Remove the local output variable reference
-    // const output = document.getElementById('output');
+    const outputContainer = document.getElementById('output'); // Assuming you have an output container
 
     let steps = [];
     let currentStep = 0;
-    let initialNumDisks = 0; // Store the initial number of disks
+    let initialNumDisks = 0;
 
     // Function to create disks
     function createDisks(numDisks) {
-        clearRods(); // Clear rods before adding new disks
-        // output.innerText = ''; // No need to clear the local output anymore
-        sendOutputToParent(''); // Clear the output in parent window
-        steps = []; // Clear steps
-        currentStep = 0; // Reset current step
-        
-        initialNumDisks = numDisks; // Store the initial number of disks
+        clearRods(); 
+        sendOutputToParent(''); // Clear the output in parent window on disk change
+        steps = [];
+        currentStep = 0;
+        initialNumDisks = numDisks;
 
         for (let i = numDisks; i >= 1; i--) {
             const disk = document.createElement('div');
@@ -26,12 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
             disk.style.width = (i * 30) + 'px';
             disk.style.backgroundColor = getDiskColor(i);
             disk.innerText = i;
-
-            // Visually place all disks on rodA at the start
             rodA.appendChild(disk);
         }
 
-        // Generate steps using Tower of Hanoi algorithm
         towerOfHanoi(initialNumDisks, 'rodA', 'rodC', 'rodB');
     }
 
@@ -54,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         towerOfHanoi(n - 1, auxRod, toRod, fromRod);
     }
 
-    // Function to display the current step with formatted output
+    // Function to display the current step
     function displayStep() {
         if (currentStep < steps.length) {
             const { disk, from, to } = steps[currentStep];
@@ -64,43 +58,33 @@ document.addEventListener('DOMContentLoaded', function() {
             const diskElements = Array.from(fromRod.querySelectorAll('.disk'));
             const diskElement = diskElements.find(d => parseInt(d.innerText) === disk);
 
-            // Disable buttons at the start of the animation
             document.getElementById('nextStep').disabled = true;
             document.getElementById('finalOutput').disabled = true;
 
             if (diskElement) {
-                // Add animation class to the disk element for upward motion
                 diskElement.classList.add('animate-up');
                     
-                // Wait for the upward animation to finish before moving the disk down
                 diskElement.addEventListener('animationend', function() {
-                    // Move the disk to the target rod
-                    // Set position to be on top of the target rod before falling
-                    diskElement.style.top = `${toRod.offsetTop}px`; // Set to the height of the rod
+                    diskElement.style.top = `${toRod.offsetTop}px`;
                     toRod.appendChild(diskElement);
-    
-                    // Add animation class for downward motion
+
                     diskElement.classList.remove('animate-up');
                     diskElement.classList.add('animate-down');
-    
-                    // Reset the animation classes after the animation ends
+
                     diskElement.addEventListener('animationend', function() {
                         diskElement.classList.remove('animate-down');
-                        diskElement.style.position = ''; // Reset position
-                        diskElement.style.top = ''; // Reset top to default
-    
-                        // Enable buttons again
+                        diskElement.style.position = '';
+                        diskElement.style.top = '';
+
                         document.getElementById('nextStep').disabled = false;
                         document.getElementById('finalOutput').disabled = false;
                     }, { once: true });
                 }, { once: true });
             }
 
-            // Convert rod IDs to uppercase (ROD A, ROD B, ROD C)
             const formattedFrom = from.charAt(0).toUpperCase() + "OD " + from.charAt(3).toUpperCase();
             const formattedTo = to.charAt(0).toUpperCase() + "OD " + to.charAt(3).toUpperCase();
 
-            // Send output to the parent window
             sendOutputToParent(`Move Disk ${disk} from ${formattedFrom} to ${formattedTo}\n`);
         }
     }
@@ -115,29 +99,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle Final Output button
     document.getElementById('finalOutput').addEventListener('click', function() {
-        // Clear existing steps and generate steps for the initial number of disks
-        clearRods(); // Clear all rods for final output visualization
-        steps = []; // Clear steps
-
-        // Move all disks to the target rod without animation
-        for (let i = initialNumDisks; i >= 1; i--) { // Start from largest to smallest
+        clearRods(); 
+        
+        // Repopulate the final state on Rod C
+        for (let i = initialNumDisks; i >= 1; i--) {
             const disk = document.createElement('div');
             disk.className = 'disk';
             disk.style.width = (i * 30) + 'px';
             disk.style.backgroundColor = getDiskColor(i);
             disk.innerText = i;
-
-            // Append the disk to rodC
             rodC.appendChild(disk);
         }
 
-        // Send final state to the parent window
+        // Send all steps (moves) as output before clearing steps array
+        for (let step of steps) {
+            const formattedFrom = step.from.charAt(0).toUpperCase() + "OD " + step.from.charAt(3).toUpperCase();
+            const formattedTo = step.to.charAt(0).toUpperCase() + "OD " + step.to.charAt(3).toUpperCase();
+            sendOutputToParent(`Move Disk ${step.disk} from ${formattedFrom} to ${formattedTo}\n`);
+        }
+
+        // Send final message
         sendOutputToParent('All disks moved to Rod C\n');
 
-        // Reset currentStep to enable future steps
-        currentStep = 0; // Reset for future use
+        // Clear steps AFTER printing final output
+        steps = [];
+        currentStep = 0;
+
+        // Hide the output container (if needed)
+        outputContainer.style.display = 'none';
     });
 
+    // Function to send output message to parent window
     function sendOutputToParent(message) {
         window.parent.postMessage(message, '*');
     }
