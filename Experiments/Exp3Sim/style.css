@@ -1,0 +1,136 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 90%; /* Use more space */
+  max-width: 1200px; /* Wider max width */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card for Queue Section */
+.card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Queue Container Layout */
+.queue-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px;
+  background-color: #e6e6e6;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* Queue Items */
+.queue-item {
+  min-width: 100px; /* Adjust for bigger size */
+  height: 120px;
+  border: 2px solid gray;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.queue-item:hover {
+  transform: scale(1.1);
+}
+
+/* Highlighting Front and Rear */
+.queue-item.front {
+  border-color: green;
+  background-color: #eaffea;
+}
+
+.queue-item.rear {
+  border-color: red;
+  background-color: #ffeaea;
+}
+
+/* Index Label Inside Queue Items */
+.index-label {
+  font-size: 14px;
+  color: #555;
+  position: absolute;
+  bottom: 8px;
+}
+
+/* Control Buttons and Inputs */
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap; /* Adjust layout for smaller screens */
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Legend Section */
+.legend {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+.front-label {
+  color: green;
+  font-weight: bold;
+}
+
+.rear-label {
+  color: red;
+  font-weight: bold;
+}
+
+/* Output Section */
+.output {
+  background-color: #e0e0e0;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+}
