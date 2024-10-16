@@ -23,10 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 experimentFrame.src = 'experiments/experiment3/Exp3Sim/index.html';
                 updateSwapBox('experiments/experiment3/experiment3-code.html', 'experiments/experiment3/experiment3-algo.html');
                 break;
-            case '4':
-                experimentFrame.src = 'experiments/final_year/FinalYearSim/index.html';
-                updateSwapBox('experiments/final_year/final_year-code.html', 'experiments/final_year/final_year-algo.html');
-                break;
             default:
                 experimentFrame.src = ''; // Clear the iframe if no valid selection
                 break;
