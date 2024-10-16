@@ -1,8 +1,9 @@
 let queue = [];
-let maxSize = 0;
-let front = 0;
-let rear = -1;
-let size = 0;
+let maxSize = 0;  // Maximum size of the queue
+let front = 0;    // Index of the front element
+let rear = -1;    // Index of the last element (rear)
+let size = 0;     // Current size of the queue
+
 const sizeInput = document.getElementById('sizeInput');
 const inputValue = document.getElementById('inputValue');
 const output = document.getElementById('output');
@@ -15,10 +16,10 @@ function initialize() {
     return;
   }
   maxSize = newSize;
-  queue = new Array(maxSize).fill(null);
-  front = 0;
-  rear = -1;
-  size = 0;
+  queue = new Array(maxSize); // Initialize queue array
+  front = 0; // Reset front index
+  rear = -1; // Reset rear index
+  size = 0;  // Reset size
   output.textContent = 'Queue initialized.';
   renderQueue();
 }
@@ -33,10 +34,11 @@ function enqueue() {
     output.textContent = 'Queue is full.';
     return;
   }
-  rear++;
-  queue[rear] = value;
-  size++;
-  inputValue.value = '';
+
+  rear++; // Increment rear index
+  queue[rear] = value; // Add new value at the rear
+  size++; // Increase size
+  inputValue.value = ''; // Clear input field
   output.textContent = `Enqueued: ${value}`;
   renderQueue();
 }
@@ -46,15 +48,18 @@ function dequeue() {
     output.textContent = 'Queue is empty.';
     return;
   }
-  const dequeuedValue = queue[front];
-  queue[front] = null;
-  front++;
-  size--;
+
+  const dequeuedValue = queue[front]; // Get the value from the front
+  queue[front] = undefined; // Clear the front value
+  front++; // Move front to the next position
+  size--; // Decrease size
+
   if (size === 0) {
     // Reset front and rear when queue becomes empty
     front = 0;
     rear = -1;
   }
+
   output.textContent = `Dequeued: ${dequeuedValue}`;
   renderQueue();
 }
@@ -68,14 +73,26 @@ function peekFront() {
 }
 
 function renderQueue() {
-  queueContainer.innerHTML = '';
+  queueContainer.innerHTML = ''; // Clear previous queue rendering
   for (let i = 0; i < maxSize; i++) {
     const div = document.createElement('div');
     div.classList.add('queue-item');
-    if (i === front && size > 0) div.classList.add('front');
+
+    // Highlight front and rear elements
+    if (i === front && size > 0) {
+      div.classList.add('front');
+    }
+    if (i === rear && size > 0) {
+      div.classList.add('rear');
+    }
+
+    // Show values between front and rear
     if (i >= front && i <= rear) {
       div.innerHTML = `<div>${queue[i]}</div>`;
+    } else {
+      div.innerHTML = `<div></div>`; // Empty box for unoccupied slots
     }
+
     const indexLabel = document.createElement('div');
     indexLabel.classList.add('index-label');
     indexLabel.textContent = `Index: ${i}`;
