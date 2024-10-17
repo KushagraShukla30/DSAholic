@@ -2,42 +2,42 @@ let currentOutput = ''; // Variable to store the current output
 let activeTab = 'out'; // Variable to track the currently active tab
 
 // Function to load content dynamically into the tab-content area
-function loadTabContent(tab, filePath = null) {
-    const contentDiv = document.getElementById('tab-content');
-    const tabLinks = document.querySelectorAll('.swapBoxCont button');
+    function loadTabContent(tab, filePath = null) {
+        const contentDiv = document.getElementById('tab-content');
+        const tabLinks = document.querySelectorAll('.swapBoxCont button');
 
-    // Set the active tab
-    activeTab = tab;
+        // Set the active tab
+        activeTab = tab;
 
-    // Remove 'active' class from all tab buttons
-    tabLinks.forEach(link => {
-        link.classList.remove('active');
-    });
+        // Remove 'active' class from all tab buttons
+        tabLinks.forEach(link => {
+            link.classList.remove('active');
+        });
 
-    // Set the clicked tab button as active
-    if (tab === 'out') {
-        contentDiv.innerHTML = currentOutput; // Restore the saved output
-        tabLinks[0].classList.add('active'); // OUT tab active
-    } else if (filePath) {
-        fetch(filePath)
-            .then(response => {
-                if (!response.ok) throw new Error("Failed to load content");
-                return response.text();
-            })
-            .then(htmlContent => {
-                contentDiv.innerHTML = htmlContent;
-                // Set the active class based on tab selection
-                if (tab === 'code') {
-                    tabLinks[1].classList.add('active'); // CODE tab
-                } else if (tab === 'algo') {
-                    tabLinks[2].classList.add('active'); // ALGO tab
-                }
-            })
-            .catch(error => {
-                contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
-            });
+        // Set the clicked tab button as active
+        if (tab === 'out') {
+            contentDiv.innerHTML = currentOutput; // Restore the saved output
+            tabLinks[0].classList.add('active'); // OUT tab active
+        } else if (filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) throw new Error("Failed to load content");
+                    return response.text();
+                })
+                .then(htmlContent => {
+                    contentDiv.innerHTML = htmlContent;
+                    // Set the active class based on tab selection
+                    if (tab === 'code') {
+                        tabLinks[1].classList.add('active'); // CODE tab
+                    } else if (tab === 'algo') {
+                        tabLinks[2].classList.add('active'); // ALGO tab
+                    }
+                })
+                .catch(error => {
+                    contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
+                });
+        }
     }
-}
 
 // Function to clear output when the number of disks changes
 function clearOutput() {

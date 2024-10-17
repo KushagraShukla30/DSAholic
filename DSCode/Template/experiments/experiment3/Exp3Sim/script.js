@@ -18,6 +18,7 @@ function initialize() {
   const newSize = parseInt(sizeInput.value);
   if (isNaN(newSize) || newSize <= 0) {
     output.textContent = 'Enter a valid queue size.';
+    sendOutputToParent('Failed to initialize: Invalid queue size.');
     return;
   }
 
@@ -27,6 +28,7 @@ function initialize() {
   rear = -1;
 
   output.textContent = 'Queue initialized.';
+  sendOutputToParent('Queue initialized successfully.');
   renderQueue();
   inputValue.focus();
 }
@@ -39,6 +41,7 @@ function enqueue() {
   }
   if (rear === maxSize - 1) {
     output.textContent = 'Queue is full (Overflow).';
+    sendOutputToParent('Queue is full (Overflow).');
     return;
   }
 
@@ -52,6 +55,7 @@ function enqueue() {
   queue[rear] = value;
   inputValue.value = '';
   output.textContent = `Enqueued: ${value}`;
+  sendOutputToParent(`Enqueued: ${value}`); // Send enqueue message to parent
   renderQueue();
   animateEnqueue(rear);
   inputValue.focus();
@@ -60,6 +64,7 @@ function enqueue() {
 function dequeue() {
   if (front === -1 || front > rear) {
     output.textContent = 'Queue is empty (Underflow).';
+    sendOutputToParent('Queue is empty (Underflow).'); // Send empty message to parent
     return;
   }
 
@@ -76,6 +81,7 @@ function dequeue() {
 
   setTimeout(() => {
     output.textContent = `Dequeued: ${dequeuedValue}`;
+    sendOutputToParent(`Dequeued: ${dequeuedValue}`); // Send dequeue message to parent
     renderQueue();
   }, 300);
 }
@@ -125,9 +131,11 @@ function animateDequeue(position) {
 function peek() {
   if (front === -1 || front > rear) {
     output.textContent = 'Queue is empty (Underflow).';
+    sendOutputToParent('Queue is empty (Underflow).'); // Send empty message to parent
     return;
   }
-  output.textContent = `Front : ${queue[front]}`;
+  output.textContent = `Front: ${queue[front]}`;
+  sendOutputToParent(`Peeked at front: ${queue[front]}`); // Send peek message to parent
 
   const items = document.querySelectorAll('.queue-item');
   const element = items[front];
@@ -139,7 +147,10 @@ function peek() {
   }, 300);  // Keep this time aligned with the CSS transition for smooth behavior
 }
 
-
+// Function to send output message to parent window
+function sendOutputToParent(message) {
+  window.parent.postMessage(message, '*');
+}
 
 // Event listeners for keyboard shortcuts
 window.addEventListener('keydown', function(event) {
