@@ -15,8 +15,8 @@ body {
 }
 
 .container {
-  width: 90%; /* Use more space */
-  max-width: 1200px; /* Wider max width */
+  width: 90%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -43,7 +43,7 @@ body {
 
 /* Queue Items */
 .queue-item {
-  min-width: 100px; /* Adjust for bigger size */
+  min-width: 100px;
   height: 120px;
   border: 2px solid gray;
   border-radius: 8px;
@@ -54,7 +54,7 @@ body {
   position: relative;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .queue-item:hover {
@@ -62,12 +62,12 @@ body {
 }
 
 /* Highlighting Front and Rear */
-.queue-item.front {
+.queue-item.rear {
   border-color: green;
   background-color: #eaffea;
 }
 
-.queue-item.rear {
+.queue-item.front {
   border-color: red;
   background-color: #ffeaea;
 }
@@ -84,7 +84,7 @@ body {
 .controls {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap; /* Adjust layout for smaller screens */
+  flex-wrap: wrap;
 }
 
 input {
@@ -130,7 +130,53 @@ button:hover {
 /* Output Section */
 .output {
   background-color: #e0e0e0;
-  padding: 12px;
-  border-radius: 6px;
+  padding: 15px;
+  font-size: 16px;
   text-align: center;
+  border-radius: 8px;
+  margin-top: 10px;
 }
+
+/* Animation for Enqueue and Dequeue */
+.pop-in {
+  transform: scale(1.2);
+  animation: pop-in 0.3s ease-in-out forwards;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+/* Enhanced Gold/Yellow Highlight for Peek */
+.highlight {
+  background-color: #ffeb3b !important; /* Soft gold/yellow for the highlight */
+  border-color: #ffca28 !important; /* Matching gold/yellow border */
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.6), 0 0 20px rgba(255, 202, 40, 0.8); /* Soft gold/yellow glowing effect */
+  transform: scale(1.05); /* Slight zoom effect */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+
+
+/* More Dynamic Pop-in Animation */
+.pop-in {
+  animation: pop-in 0.25s ease-in-out forwards; /* Quicker pop-in with ease-in-out */
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.15); /* Bigger pop at start */
+  }
+  100% {
+    transform: scale(1); /* Returns smoothly to normal size */
+  }
+}
+

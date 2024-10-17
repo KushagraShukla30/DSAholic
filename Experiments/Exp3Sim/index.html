@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=3.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Fixed viewport scale -->
   <title>Queue Visualization</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -23,7 +23,7 @@
       <button onclick="initialize()">Initialize</button>
       <button onclick="enqueue()">Enqueue</button>
       <button onclick="dequeue()">Dequeue</button>
-      <button onclick="peekFront()">Peek Front</button>
+      <button id="peekButton">Peek Front</button> <!-- Removed inline onclick -->
     </div>
 
     <div id="output" class="output"></div>
