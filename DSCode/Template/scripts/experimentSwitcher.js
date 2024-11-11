@@ -1,6 +1,5 @@
 const basePath = 'experiments/experiment';
 
-// Array with only essential details
 const experiments = [
     {
         id: '1',
@@ -19,7 +18,6 @@ const experiments = [
     }
 ];
 
-// Function to generate paths dynamically based on experiment ID
 function getExperimentPaths(id) {
     return {
         simPath: `${basePath}${id}/Exp${id}Sim/index.html`,
@@ -33,8 +31,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const experimentFrame = document.getElementById('experimentFrame');
     const experimentTitle = document.getElementById('experimentTitle');
     const experimentQuestion = document.getElementById('experimentQuestion');
+    const swapBoxButtons = document.querySelectorAll('.swapBoxCont button');
 
-    // Populate the dropdown with experiments from the array
+    const savedExperimentId = localStorage.getItem('selectedExperimentId') || '1';
+    const savedTab = localStorage.getItem('activeTab') || 'out';
+
+    dropdown.value = savedExperimentId;
+    loadExperiment(savedExperimentId, savedTab);
+
     experiments.forEach(exp => {
         const option = document.createElement('option');
         option.value = exp.id;
@@ -42,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdown.appendChild(option);
     });
 
-    // Event listener for dropdown change
     dropdown.addEventListener('change', function() {
         const selectedValue = this.value;
         const selectedExperiment = experiments.find(exp => exp.id === selectedValue);
@@ -50,36 +53,85 @@ document.addEventListener('DOMContentLoaded', function() {
         clearIframeOutput(experimentFrame);
 
         if (selectedExperiment) {
-            // Get paths using getExperimentPaths
             const paths = getExperimentPaths(selectedExperiment.id);
-
-            // Update iframe and swapBox paths
             experimentFrame.src = paths.simPath;
             updateSwapBox(paths.codePath, paths.algoPath);
 
-            // Update Experiment Title and Question dynamically
             experimentTitle.textContent = selectedExperiment.title;
             experimentQuestion.textContent = selectedExperiment.question;
 
-            // Load tab content based on the active tab
-            loadTabContent(activeTab);
+            localStorage.setItem('selectedExperimentId', selectedExperiment.id);
+            loadTabContent(savedTab); 
         } else {
-            // Reset content if no valid experiment is selected
-            experimentFrame.src = ''; // Clear iframe
+            experimentFrame.src = ''; 
             experimentTitle.textContent = 'Experiment No. 00';
             experimentQuestion.textContent = 'To solve the tower of Hanoi problem using recursion.';
         }
     });
+
+    function loadExperiment(experimentId, tab) {
+        const selectedExperiment = experiments.find(exp => exp.id === experimentId);
+
+        if (selectedExperiment) {
+            const paths = getExperimentPaths(experimentId);
+            experimentFrame.src = paths.simPath;
+            updateSwapBox(paths.codePath, paths.algoPath);
+
+            experimentTitle.textContent = selectedExperiment.title;
+            experimentQuestion.textContent = selectedExperiment.question;
+
+            document.querySelector(`.swapBoxCont button[data-tab="${tab}"]`).click();
+        }
+    }
+
+    swapBoxButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tab = this.textContent.toLowerCase();
+            localStorage.setItem('activeTab', tab); 
+        });
+    });
 });
 
-// Helper function to update swapBox buttons (Code and Algo links)
 function updateSwapBox(codePath, algoPath) {
     const swapBoxButtons = document.querySelectorAll('.swapBoxCont button');
     swapBoxButtons[1].setAttribute('onclick', `loadTabContent('code', '${codePath}')`);
     swapBoxButtons[2].setAttribute('onclick', `loadTabContent('algo', '${algoPath}')`);
 }
 
-// Helper function to clear output in the iframe
 function clearIframeOutput(iframe) {
     iframe.contentWindow.postMessage({ type: 'clearOutput' }, '*');
+}
+
+function loadTabContent(tab, filePath = null) {
+    const contentDiv = document.getElementById('tab-content');
+    const tabLinks = document.querySelectorAll('.swapBoxCont button');
+
+    activeTab = tab; 
+    localStorage.setItem('activeTab', tab); 
+
+    tabLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    if (tab === 'out') {
+        contentDiv.innerHTML = currentOutput;
+        tabLinks[0].classList.add('active');
+    } else if (filePath) {
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to load content");
+                return response.text();
+            })
+            .then(htmlContent => {
+                contentDiv.innerHTML = htmlContent;
+                if (tab === 'code') {
+                    tabLinks[1].classList.add('active');
+                } else if (tab === 'algo') {
+                    tabLinks[2].classList.add('active');
+                }
+            })
+            .catch(error => {
+                contentDiv.innerHTML = `<p>Error loading content: ${error.message}</p>`;
+            });
+    }
 }

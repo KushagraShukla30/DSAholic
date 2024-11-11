@@ -37,21 +37,22 @@
 
         <div class="swapOutline">
             <div class="swapBoxCont">
-                <button onclick="loadTabContent('out')">OUT</button>
-                <button onclick="loadTabContent('code', 'experiments/experiment1/experiment1-code.html')">CODE</button>
-                <button onclick="loadTabContent('algo', 'experiments/experiment1/experiment1-algo.html')">ALGO</button>
+                <button data-tab="out" onclick="loadTabContent('out')">OUT</button>
+                <button data-tab="code" onclick="loadTabContent('code', 'experiments/experiment1/experiment1-code.html')">CODE</button>
+                <button data-tab="algo" onclick="loadTabContent('algo', 'experiments/experiment1/experiment1-algo.html')">ALGO</button>
             </div>
-
+        
             <button class="vid-btn" onclick="yourFunctionHere()">
                 <img class="vid" alt="Video Icon" src="./assets/vid.svg">
             </button>
-
+        
             <hr>
-
+        
             <div id="tab-content">
                 <p>Select a tab to view its content.</p>
             </div>
         </div>
+        
     </main>
     
     <script src="scripts/main.js"></script>
