@@ -1,17 +1,122 @@
-.swapBoxCont button {
+.simOutline{
+    height: 750px;
+    width: 788px;
+    border: 2px solid #f4e5fd;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+ }
+ 
+.swapOutline{
+    margin-right: 20px;
+    margin-top: 20px;
+    height: 710px;
+    width: 570px;
+    border: 2px solid #f4e5fd;
+    border-radius: 20px;
+    padding: 20px;
+}
+ 
+ #experimentTitle{
+    height: 45px;
+    /* width: 293px; */
+    border-radius: 51px;
+    background-color: #fff;
+    color: #764890;
+    margin-top: 30px;
+    font-size: 2em;
+    padding-left: 15px;
+    margin: 20px;
+    padding-top: 5px;
+ }
+ 
+ 
+ #experimentQuestion{
+    color: #fff;
+    margin-left: 20px;
+    margin-bottom: 30px;
+ }
+ 
+ 
+ h1{
+    margin-top: 20px;
+ }
+ 
+.swapBoxCont{
+    height: 30px;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    background-color: #f1f1f1;
+}
+ 
+ .swapBoxCont button {
     padding: 10px 20px;
     border: none;
     background-color: #f1f1f1;
     cursor: pointer;
-}
-
-.swapBoxCont button.active {
-    background-color: #007bff; /* Change to your preferred active color */
+    border-radius: 10px;
+ }
+ 
+ 
+ .swapBoxCont button.active {
+    background-color: #b5f; /* Change to your preferred active color */
     color: white; /* Text color for active tab */
     font-weight: bold;
-    border-bottom: 3px solid #0056b3; /* Example highlight */
-}
-
-main {
+    border-bottom: 3px solid #ae5bf7; /* Example highlight */
+ }
+ 
+ 
+ main{
     display: flex;
-}
+ }
+ 
+ 
+ body{
+    background-color: #1a151d;
+    color: #fff;
+    padding: 20px;
+ }
+ 
+ 
+ #logo{
+    height: 3.6rem;
+    width: 13.25rem;
+    border-radius: 1.93rem;
+    background-color: #b5f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7em;
+ }
+ 
+ 
+ .nav-controls{
+    height: 50px;
+    width: 335px;
+    border-radius: 25px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+ }
+ 
+ 
+ .nav-controls i{
+    font-size: 24px; /* Adjust size as per your requirement */
+    margin: 0 20px;  /* Adds spacing between icons */
+    color: #ae5bf7;  /* Optional: Customize the icon color */
+ }
+ 
+ 
+ header{
+    display: flex;
+    justify-content: space-between;
+ }
+ 
+ 
+ main{
+    display: flex;
+    justify-content: space-between;
+ }
