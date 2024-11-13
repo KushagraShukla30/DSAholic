@@ -1,122 +1,335 @@
+/* General Body Styling */
+/* body {
+   background-color: #1a151d;
+   color: #fff;
+   padding: 20px;
+   font-family: Arial, sans-serif;
+   margin: 0;
+} */
+
+/* Header Styling */
+/* header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 20px;
+   background-color: #2c2233;
+   border-radius: 15px;
+} */
+
+/* .nav-controls {
+   height: 50px;
+   width: 335px;
+   border-radius: 25px;
+   background-color: #fff;
+   color: #764890;
+   font-size: 1.5em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-weight: bold;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+   transition: transform 0.2s ease;
+}
+
+.nav-controls:hover {
+   transform: scale(1.05);
+}
+
+.more-btn select {
+   padding: 10px;
+   font-size: 1em;
+   color: #764890;
+   border: none;
+   border-radius: 15px;
+   background-color: #f4e5fd;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+} */
+
+/* Main Layout */
+/* main {
+   display: flex;
+   justify-content: space-between;
+   margin-top: 20px;
+   gap: 20px;
+} */
+
+/* Simulation Outline Box */
+/* .simOutline {
+   height: 750px;
+   width: 788px;
+   border: 2px solid #f4e5fd;
+   border-radius: 20px;
+   padding: 20px;
+   background-color: #2c2233;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#experimentTitle {
+   color: #f4e5fd;
+   background-color: #2c2233;
+   font-size: 2.5em;
+   text-align: center;
+   padding: 15px;
+   border-radius: 15px;
+   margin-top: 0;
+}
+
+#experimentQuestion {
+   color: #f4e5fd;
+   margin: 20px 0;
+   font-size: 1.2em;
+} */
+
+/* Swap Outline Box */
+/* .swapOutline {
+   height: 710px;
+   width: 570px;
+   border: 2px solid #f4e5fd;
+   border-radius: 20px;
+   padding: 20px;
+   background-color: #2c2233;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.swapBoxCont {
+   display: flex;
+   gap: 10px;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.swapBoxCont button {
+   padding: 10px 20px;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   background-color: #764890;
+   color: #fff;
+   font-weight: bold;
+   transition: background-color 0.3s ease, transform 0.2s ease;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.swapBoxCont button:hover {
+   background-color: #ae5bf7;
+   transform: scale(1.05);
+} */
+
+/* .swapBoxCont button.active {
+   background-color: #ae5bf7;
+   color: white;
+   font-weight: bold;
+   border-bottom: 3px solid #f4e5fd;
+} */
+
+/* Experiment Content Styling */
+/* #tab-content {
+   color: #f4e5fd;
+   font-size: 1.1em;
+   line-height: 1.6;
+   text-align: center;
+} */
+
+/* Experiment Frame */
+/* .sim iframe {
+   border-radius: 15px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+} */
+
+/* Footer */
+/* footer {
+   text-align: center;
+   padding: 10px;
+   background-color: #1a151d;
+   color: #ae5bf7;
+   font-size: 1em;
+} */
+
+
 .simOutline{
-    height: 750px;
-    width: 788px;
-    border: 2px solid #f4e5fd;
-    border-radius: 20px;
-    margin-top: 20px;
-    margin-left: 20px;
- }
- 
-.swapOutline{
-    margin-right: 20px;
-    margin-top: 20px;
-    height: 710px;
-    width: 570px;
-    border: 2px solid #f4e5fd;
-    border-radius: 20px;
-    padding: 20px;
+   height: 750px;
+   width: 788px;
+   border: 2px solid #f4e5fd;
+   border-radius: 20px;
+   margin-top: 20px;
+   margin-left: 20px;
 }
- 
- #experimentTitle{
-    height: 45px;
-    /* width: 293px; */
-    border-radius: 51px;
-    background-color: #fff;
-    color: #764890;
-    margin-top: 30px;
-    font-size: 2em;
-    padding-left: 15px;
-    margin: 20px;
-    padding-top: 5px;
- }
- 
- 
- #experimentQuestion{
-    color: #fff;
-    margin-left: 20px;
-    margin-bottom: 30px;
- }
- 
- 
- h1{
-    margin-top: 20px;
- }
- 
+
+.swapOutline {
+   height: 710px;
+   width: 570px;
+   border: 2px solid #f4e5fd;
+   border-radius: 20px;
+   padding: 20px;
+   background-color: #2c2233;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.swapBoxCont {
+   display: flex;
+   gap: 10px;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.swapBoxCont button {
+   padding: 10px 20px;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   background-color: #764890;
+   color: #fff;
+   font-weight: bold;
+   transition: background-color 0.3s ease, transform 0.2s ease;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.swapBoxCont button:hover {
+   background-color: #ae5bf7;
+   transform: scale(1.05);
+}
+
+.swapBoxCont button.active {
+   background-color: #ae5bf7;
+   color: white;
+   font-weight: bold;
+   border-bottom: 3px solid #f4e5fd;
+}
+
+.swapBoxCont {
+   display: flex;
+   gap: 10px;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.swapBoxCont button {
+   padding: 10px 20px;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   background-color: #764890;
+   color: #fff;
+   font-weight: bold;
+   transition: background-color 0.3s ease, transform 0.2s ease;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Experiment Content Styling */
+#tab-content {
+   color: #f4e5fd;
+   font-size: 1.1em;
+   line-height: 1.6;
+   text-align: center;
+}
+
+/* Experiment Frame */
+.sim iframe {
+   border-radius: 15px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#experimentTitle{
+   height: 45px;
+   /* width: 293px; */
+   border-radius: 51px;
+   background-color: #fff;
+   color: #764890;
+   margin-top: 30px;
+   font-size: 2em;
+   padding-left: 15px;
+   margin: 20px;
+   padding-top: 5px;
+}
+
+
+#experimentQuestion{
+   color: #fff;
+   margin-left: 20px;
+   margin-bottom: 30px;
+}
+
+h1{
+   margin-top: 20px;
+}
+
 .swapBoxCont{
-    height: 30px;
-    width: 100px;
-    display: flex;
-    flex-direction: row;
-    background-color: #f1f1f1;
+   height: 30px;
+   width: 200px;
+   display: flex;
+   flex-direction: row;
+   border-radius: 10%;
+   /* background-color: #f1f1f1; */
 }
- 
- .swapBoxCont button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #f1f1f1;
-    cursor: pointer;
-    border-radius: 10px;
- }
- 
- 
- .swapBoxCont button.active {
-    background-color: #b5f; /* Change to your preferred active color */
-    color: white; /* Text color for active tab */
-    font-weight: bold;
-    border-bottom: 3px solid #ae5bf7; /* Example highlight */
- }
- 
- 
- main{
-    display: flex;
- }
- 
- 
- body{
-    background-color: #1a151d;
-    color: #fff;
-    padding: 20px;
- }
- 
- 
- #logo{
-    height: 3.6rem;
-    width: 13.25rem;
-    border-radius: 1.93rem;
-    background-color: #b5f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.7em;
- }
- 
- 
- .nav-controls{
-    height: 50px;
-    width: 335px;
-    border-radius: 25px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
- }
- 
- 
- .nav-controls i{
-    font-size: 24px; /* Adjust size as per your requirement */
-    margin: 0 20px;  /* Adds spacing between icons */
-    color: #ae5bf7;  /* Optional: Customize the icon color */
- }
- 
- 
- header{
-    display: flex;
-    justify-content: space-between;
- }
- 
- 
- main{
-    display: flex;
-    justify-content: space-between;
- }
+
+.swapBoxCont button {
+   padding: 10px 20px;
+   border: none;
+   /* background-color: #f1f1f1; */
+   cursor: pointer;
+   border-radius: 10px;
+}
+
+.swapBoxCont button.active {
+   background-color: #b5f; /* Change to your preferred active color */
+   color: white; /* Text color for active tab */
+   font-weight: bold;
+   border-bottom: 3px solid #ae5bf7; /* Example highlight */
+}
+
+
+main{
+   display: flex;
+}
+
+
+body{
+   background-color: #1a151d;
+   color: #fff;
+   padding: 20px;
+}
+
+#logo{
+   height: 3.6rem;
+   width: 13.25rem;
+   border-radius: 1.93rem;
+   background-color: #b5f;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.7em;
+}
+
+
+.nav-controls{
+   height: 50px;
+   width: 335px;
+   border-radius: 25px;
+   background-color: #fff;
+   color: #ae5bf7;
+   font-size: 1.5em;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+}
+
+.nav-controls i{
+   font-size: 24px; /* Adjust size as per your requirement */
+   margin: 0 20px;  /* Adds spacing between icons */
+   color: #ae5bf7;  /* Optional: Customize the icon color */
+}
+
+
+header{
+   display: flex;
+   justify-content: space-between;
+}
+
+
+main{
+   display: flex;
+   justify-content: space-between;
+}
