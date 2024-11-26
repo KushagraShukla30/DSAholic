@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Operations Algorithm</title>
+</head>
+<body>
+    <header>
+        <h1>Algorithm: Stack Operations</h1>
+    </header>
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            A stack is a linear data structure that follows the <strong>LIFO</strong> (Last In, First Out) principle.
+            This experiment demonstrates the implementation of the following operations:
+        </p>
+        <ul>
+            <li><strong>Push:</strong> Add an element to the stack.</li>
+            <li><strong>Pop:</strong> Remove the top element from the stack.</li>
+            <li><strong>Peek:</strong> View the top element without removing it.</li>
+            <li><strong>isEmpty:</strong> Check if the stack is empty.</li>
+            <li><strong>isFull:</strong> Check if the stack is full.</li>
+            <li><strong>Display:</strong> Display all stack elements.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Algorithms</h2>
+        <h3>Push Operation</h3>
+        <ul>
+            <li><strong>Step 1:</strong> Check for overflow. If <em>Top = Max - 1</em>, print "Overflow" and exit.</li>
+            <li><strong>Step 2:</strong> Increment <em>Top</em> by 1.</li>
+            <li><strong>Step 3:</strong> Add the element to <em>Stack[Top]</em>.</li>
+        </ul>
+        
+        <h3>Pop Operation</h3>
+        <ul>
+            <li><strong>Step 1:</strong> Check for underflow. If <em>Top = -1</em>, print "Underflow" and exit.</li>
+            <li><strong>Step 2:</strong> Store the top element (<em>Stack[Top]</em>) in a variable.</li>
+            <li><strong>Step 3:</strong> Decrement <em>Top</em> by 1.</li>
+        </ul>
+
+        <h3>Peek Operation</h3>
+        <ul>
+            <li><strong>Step 1:</strong> Check for underflow. If <em>Top = -1</em>, print "Underflow" and exit.</li>
+            <li><strong>Step 2:</strong> Return <em>Stack[Top]</em>.</li>
+        </ul>
+
+        <h3>isEmpty Operation</h3>
+        <ul>
+            <li><strong>Step 1:</strong> If <em>Top = -1</em>, return true (1).</li>
+            <li><strong>Step 2:</strong> Else, return false (0).</li>
+        </ul>
+
+        <h3>isFull Operation</h3>
+        <ul>
+            <li><strong>Step 1:</strong> If <em>Top = Max - 1</em>, return true (1).</li>
+            <li><strong>Step 2:</strong> Else, return false (0).</li>
+        </ul>
+
+        <h3>Display Operation</h3>
+        <ul>
+            <li><strong>Step 1:</strong> If <em>Top = -1</em>, print "Stack is empty" and exit.</li>
+            <li><strong>Step 2:</strong> Iterate from <em>Top</em> to 0 and print each <em>Stack[i]</em>.</li>
+        </ul>
+    </section>
+</body>
+</html>

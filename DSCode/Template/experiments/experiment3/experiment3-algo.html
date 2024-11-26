@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 3 Algorithm</title>
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="algo-container">
+        <h1>Experiment 3: Queue Operations</h1>
+        <h2>Problem Overview:</h2>
+        <p>
+            A queue is a linear data structure that follows the FIFO (First In, First Out) principle. 
+            Elements are inserted from the rear end and deleted from the front end. In this experiment, 
+            we will implement a queue using an array in C and perform basic operations such as insertion, 
+            deletion, and display.
+        </p>
+        
+        <h2>Algorithm to Initialize the Queue:</h2>
+        <ol>
+            <li><strong>[Initialize Queue]</strong> Set <code>FRONT = -1</code> and <code>REAR = -1</code>.</li>
+            <li>Exit.</li>
+        </ol>
+
+        <h2>Algorithm to Insert an Element in the Queue (enqueue):</h2>
+        <ol>
+            <li><strong>[Overflow Check]</strong> If <code>REAR = MAX - 1</code>, then:
+                <ul>
+                    <li>Print "Overflow" and exit.</li>
+                </ul>
+            </li>
+            <li><strong>[Update REAR]</strong> If <code>FRONT = -1</code> and <code>REAR = -1</code>, then:
+                <ul>
+                    <li>Set <code>FRONT = 0</code> and <code>REAR = 0</code>.</li>
+                </ul>
+                Else:
+                <ul>
+                    <li>Increment <code>REAR = REAR + 1</code>.</li>
+                </ul>
+            </li>
+            <li><strong>[Insert Element]</strong> Set <code>QUEUE[REAR] = ITEM</code>.</li>
+            <li>Exit.</li>
+        </ol>
+
+        <h2>Algorithm to Remove an Element from the Queue (dequeue):</h2>
+        <ol>
+            <li><strong>[Underflow Check]</strong> If <code>FRONT = -1</code> or <code>FRONT > REAR</code>, then:
+                <ul>
+                    <li>Print "Underflow" and exit.</li>
+                </ul>
+            </li>
+            <li><strong>[Remove Element]</strong> Assign <code>VAL = QUEUE[FRONT]</code>.</li>
+            <li>If <code>FRONT = REAR</code>, then:
+                <ul>
+                    <li>Set <code>FRONT = -1</code> and <code>REAR = -1</code> (queue is now empty).</li>
+                </ul>
+                Else:
+                <ul>
+                    <li>Increment <code>FRONT = FRONT + 1</code>.</li>
+                </ul>
+            </li>
+            <li><strong>[Return Deleted Element]</strong> Return <code>VAL</code>.</li>
+            <li>Exit.</li>
+        </ol>
+
+        <h2>Algorithm to Return the First Element in the Queue (top):</h2>
+        <ol>
+            <li><strong>[Empty Check]</strong> If <code>FRONT = -1</code> or <code>FRONT > REAR</code>, then:
+                <ul>
+                    <li>Print "Underflow" and exit.</li>
+                </ul>
+            </li>
+            <li><strong>[Return Front Element]</strong> Return <code>QUEUE[FRONT]</code>.</li>
+            <li>Exit.</li>
+        </ol>
+
+        <h2>Algorithm to Display the Queue Elements:</h2>
+        <ol>
+            <li><strong>[Empty Check]</strong> If <code>REAR = -1</code>, then:
+                <ul>
+                    <li>Print "Empty queue" and exit.</li>
+                </ul>
+            </li>
+            <li><strong>[Display Elements]</strong> For <code>i = FRONT</code> to <code>REAR</code>, do:
+                <ul>
+                    <li>Print <code>QUEUE[i]</code>.</li>
+                </ul>
+            </li>
+            <li>Exit.</li>
+        </ol>
+    </div>
+</body>
+</html>
