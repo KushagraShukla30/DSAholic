@@ -1,34 +1,30 @@
 /* General Body Styling */
 body {
-    background-color: #1a151d; /* Dark background */
+    background-color: #1a151d00; /* Dark background */
     color: #f4e5fd; /* Light text */
     font-family: Arial, sans-serif; /* Default font */
     margin: 0;
     padding: 20px;
+    font-size: 12px; /* Reduced body font size */
 }
 
 /* Code Container Styling */
 .code-container {
-    background-color: #2c2233; /* Code block background */
-    color: #f4e5fd; /* Code text color */
-    padding: 20px; /* Space inside the container */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-    overflow-x: auto; /* Horizontal scroll for long lines */
+    border-radius: 8px; /* Slightly smaller rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow */
     font-family: "Courier New", Courier, monospace; /* Code font */
-    margin-top: 20px; /* Space from other elements */
+    line-height: 1.6; /* Increased line spacing for better readability */
 }
 
 /* Customize Pre and Code */
 pre {
     margin: 0; /* Remove default margins */
-    font-size: 1em; /* Adjust font size */
+    font-size: 0.95em; /* Slightly reduced font size for code */
     white-space: pre-wrap; /* Preserve formatting */
     word-wrap: break-word; /* Break long words if needed */
 }
 
 code {
-    font-size: 0.95em; /* Slightly smaller text for code */
-    line-height: 1.5; /* Improve readability */
+    font-size: 0.19em; /* Reduced font size for better readability */
+    line-height: 1.6; /* Improved line height for clarity */
 }
-

@@ -188,3 +188,19 @@ main{
    display: flex;
    justify-content: space-between;
 }
+
+
+/* Ensure the iframe container fills its parent's height */
+#code-iframe-container {
+   display: none;
+   width: 100%;  /* Full width */
+   height: 100%; /* Full height to fit the parent */
+   position: relative; /* To ensure it aligns properly */
+}
+
+/* Ensure the iframe also fills its container */
+#code-iframe {
+   width: 100%;  /* Full width */
+   height: 100%; /* Full height */
+   border: none;  /* Remove the border for a cleaner look */
+}
