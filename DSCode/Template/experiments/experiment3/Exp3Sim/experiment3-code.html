@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiment 1 Code</title>
+    <title>Experiment 3 Code</title>
     <!-- Prism.js CSS for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     <!-- Link to your external CSS file -->
@@ -13,28 +13,7 @@
 <body>
     <div class="code-container">
         <pre><code class="language-c">
-#include< stdio.h >
-
-void toh(int, char, char, char);
-
-int main()
-{
-    int n;
-    printf("Enter num of disks: ");
-    scanf("%d",&n);
-
-    printf("The sequence of moves involved in the Tower of Hanoi from Pole 'A' to 'C' are:\n");
-    toh(n,'A','C','B');
-}
-
-void toh(int n, char src, char dest, char aux){
-    if(n == 1)  printf("Move disk 1 from ROD %c to ROD %c \n", src,dest);
-    else{
-        toh(n-1,src, aux, dest);
-        printf("Move disk %d from ROD %c to ROD %c \n",n, src,dest);
-        toh(n-1, aux, dest, src);
-    }
-}
+<!-- code here -->
         </code></pre>
     </div>
     <!-- Prism.js Script -->
