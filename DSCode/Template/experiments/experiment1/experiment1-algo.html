@@ -1,7 +1,58 @@
-<h3>Experiment 1 - Algorithm</h3>
-<ul>
-    <li>Step 1: Initialize variables</li>
-    <li>Step 2: Process input</li>
-    <li>Step 3: Run the algorithm</li>
-    <li>Step 4: Output the result</li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi Algorithm</title>
+</head>
+<body>
+    <header>
+        <h1>Algorithm: Tower of Hanoi</h1>
+    </header>
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            The solution involves breaking down the problem into smaller steps using recursion. 
+            Let’s first understand how to solve it with fewer disks.
+        </p>
+    </section>
+    <section>
+        <h2>For 1 Disk:</h2>
+        <p>Move the disk directly from the source to the destination.</p>
+        <h2>For 2 Disks:</h2>
+        <ul>
+            <li>Move the smaller disk to the auxiliary pole.</li>
+            <li>Move the larger disk to the destination pole.</li>
+            <li>Move the smaller disk from the auxiliary pole to the destination pole.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Recursive Algorithm:</h2>
+        <h3>Procedure:</h3>
+        <ul>
+            <li><strong>Base Case:</strong> If there is only 1 disk, move it from the source to the destination.</li>
+            <li><strong>Recursive Case:</strong></li>
+            <ul>
+                <li>Move the top <em>n−1</em> disks from the source to the auxiliary pole.</li>
+                <li>Move the <em>nth</em> (largest) disk from the source to the destination.</li>
+                <li>Move the <em>n−1</em> disks from the auxiliary pole to the destination.</li>
+            </ul>
+        </ul>
+    </section>
+    <section>
+        <h2>Pseudocode:</h2>
+        <pre>
+START
+Procedure Hanoi(disk, source, dest, aux)
+    IF disk == 1, THEN
+        move disk from source to dest
+    ELSE
+        Hanoi(disk - 1, source, aux, dest)   // Step 1
+        move disk from source to dest        // Step 2
+        Hanoi(disk - 1, aux, dest, source)   // Step 3
+END Procedure
+STOP
+        </pre>
+    </section>
+</body>
+</html>

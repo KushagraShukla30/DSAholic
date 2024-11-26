@@ -74,8 +74,11 @@
    color: #f4e5fd;
    font-size: 1.1em;
    line-height: 1.6;
-   text-align: center;
+   max-height: 640px; /* Adjust to fit within the .swapOutline height */
+   overflow-y: auto; /* Enable vertical scrolling if content overflows */
+   padding-right: 10px; /* Space for scrollbar */
 }
+
 
 /* Experiment Frame */
 .sim iframe {

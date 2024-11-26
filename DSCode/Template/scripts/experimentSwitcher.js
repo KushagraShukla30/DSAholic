@@ -26,6 +26,7 @@ function getExperimentPaths(id) {
     };
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const dropdown = document.getElementById('dropdown');
     const experimentFrame = document.getElementById('experimentFrame');
