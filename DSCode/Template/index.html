@@ -9,8 +9,7 @@
 <body>
 
     <header>
-        <div class="nav-controls"> DSAHolic
-        </div>
+        <div class="nav-controls"> DSAHolic </div>
 
         <!-- More Button -->
         <div class="more-btn">
@@ -18,7 +17,6 @@
                 <option value="">-- Select Experiment --</option>
             </select>
         </div>
-        
     </header>
     
     <main>
@@ -30,18 +28,26 @@
                 <iframe id="experimentFrame" src="experiments/experiment1/Exp1Sim/index.html" width="100%" height="500px" frameborder="0"></iframe>
             </div>
         </div>
-        
 
         <div class="swapOutline">
             <div class="swapBoxCont">
                 <button data-tab="out" onclick="loadTabContent('out')">OUT</button>
-                <button data-tab="code" onclick="loadTabContent('code', 'experiments/experiment1/experiment1-code.html')">CODE</button>
+                <!-- Updated CODE button to load into iframe -->
+                <button data-tab="code" onclick="loadCodeTab()">CODE</button>
                 <button data-tab="algo" onclick="loadTabContent('algo', 'experiments/experiment1/experiment1-algo.html')">ALGO</button>
             </div>
+            <div id="code-iframe-container" style="display: none;">
+                <iframe id="code-iframe" width="100%" height="500px" frameborder="0"></iframe>
+            </div>
             <hr>
-        
+
             <div id="tab-content">
                 <p>Select a tab to view its content.</p>
+            </div>
+
+            <!-- This is where we load the CODE content -->
+            <div id="code-iframe-container" style="display: none;">
+                <iframe id="code-iframe" width="100%" height="500px" frameborder="0"></iframe>
             </div>
         </div>
         

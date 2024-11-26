@@ -26,7 +26,6 @@ function getExperimentPaths(id) {
     };
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const dropdown = document.getElementById('dropdown');
     const experimentFrame = document.getElementById('experimentFrame');
@@ -95,8 +94,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function updateSwapBox(codePath, algoPath) {
     const swapBoxButtons = document.querySelectorAll('.swapBoxCont button');
-    swapBoxButtons[1].setAttribute('onclick', `loadTabContent('code', '${codePath}')`);
+    swapBoxButtons[1].setAttribute('onclick', `loadCodeTab('${codePath}')`);
     swapBoxButtons[2].setAttribute('onclick', `loadTabContent('algo', '${algoPath}')`);
+}
+
+// Updated this function to load the code tab content into an iframe
+function loadCodeTab(codePath) {
+    const codeIframe = document.getElementById('code-iframe');
+    const codeIframeContainer = document.getElementById('code-iframe-container');
+    
+    // Show the iframe and hide other content
+    codeIframeContainer.style.display = 'block';  // Show iframe container
+    document.getElementById('tab-content').style.display = 'none';  // Hide the tab content
+
+    // Set the iframe source
+    codeIframe.src = codePath;
+
+    // Make sure the "CODE" tab is highlighted
+    const tabLinks = document.querySelectorAll('.swapBoxCont button');
+    tabLinks.forEach(link => link.classList.remove('active'));
+    tabLinks[1].classList.add('active');
 }
 
 function clearIframeOutput(iframe) {
@@ -105,7 +122,12 @@ function clearIframeOutput(iframe) {
 
 function loadTabContent(tab, filePath = null) {
     const contentDiv = document.getElementById('tab-content');
+    const codeIframeContainer = document.getElementById('code-iframe-container');
     const tabLinks = document.querySelectorAll('.swapBoxCont button');
+
+    // Hide the iframe and show the content
+    codeIframeContainer.style.display = 'none';  // Hide iframe
+    contentDiv.style.display = 'block';  // Show the default content
 
     activeTab = tab; 
     localStorage.setItem('activeTab', tab); 
